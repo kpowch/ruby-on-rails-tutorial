@@ -14,14 +14,28 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = Article.new(article_params)
 
     if @article.save
       redirect_to @article
     else
-      # note: render not redirect so it's done on the same request as form submission
-      render 'new'
+      render 'new' # not redirect cuz we want it on the form request (not new req)
+    end
+  end
+
+  # Note: not all attributes need to be sent here - just what needs updating
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render 'edit'
     end
   end
 
