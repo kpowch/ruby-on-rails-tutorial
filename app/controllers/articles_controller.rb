@@ -3,6 +3,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    render plain: params[:article].inspect
+    @artivle = Article.new(article_params)
+
+    @article.save
+    redirect_to @article
   end
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :text)
+    end
 end
