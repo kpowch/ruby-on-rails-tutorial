@@ -1,9 +1,15 @@
 class ArticlesController < ApplicationController
+  # CRUD actions are usually added in the following order:
+  # index, show, new, edit, create, update, destroy
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
   end
 
   def create
-    @artivle = Article.new(article_params)
+    @article = Article.new(article_params)
 
     @article.save
     redirect_to @article
