@@ -1,1 +1,5 @@
 <h1>Hello, Rails!</h1>
+<!-- Note: if the link action goes to the same controller, :controller option
+does not need to be specified -->
+<%= link_to 'My Blog', controller: 'articles' %>
+<%= link_to 'New article', new_article_path %>
